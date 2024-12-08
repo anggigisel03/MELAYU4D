@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MELAYU4D: Prediksi Bola</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #F7E1C1;
+  color: #4A342E;
+  line-height: 1.6;
+}
+
+.main-content {
+      animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+}
+
+@media screen and (max-width: 768px) {
+  header.navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    background-color: #8B5E34;
+    color: #F7E1C1;
+  }
+  
+  .nav-links ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .match-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .match-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .match-card .score {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+  }
+}
+
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #8B5E34;
+  color: #F7E1C1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+  width: 200px;
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #F7E1C1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  text-align: center;
+  background-color: #D9B48F;
+  color: #4A342E;
+  padding-top: 1rem;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.masukdaftar {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.masuk {
+  background-color: #8B5E34;
+  color: #F7E1C1;
+  padding: 10px;
+  max-width: 400px;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+}
+
+.masuk a {
+  text-decoration: none;
+  color: #F7E1C1;
+}
+
+.daftar {
+  background-color: #8B5E34;
+  text-decoration: none;
+  color: #F7E1C1;
+  padding: 10px;
+  max-width: 400px;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+}
+
+.daftar a {
+  text-decoration: none;
+  color: #F7E1C1;
+}
+
+.masuk:hover {
+  background-color: #4A342E;
+}
+
+.daftar:hover{
+  background-color: #4A342E;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  margin: 10px auto;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slider-container button {
+  position: absolute;
+  top: 35%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider-container button.prev {
+  left: 10px;
+}
+
+.slider-container button.next {
+  right: 10px;
+}
+
+.slider-container button:hover {
+  background-color: #4A342E;
+}
+
+.predictions {
+  padding: 1rem;
+}
+
+.predictions h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #4A342E;
+}
+
+.predictions p {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filters {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #D9B48F;
+  color: #4A342E;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+}
+
+.filter-btn.active {
+  background: #8B5E34;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+}
+
+.match-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.match-card {
+  background: #8B5E34;
+  color: #F7E1C1;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.match-card .team {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.match-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.match-card .score {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.providers {
+  text-align: center;
+  padding: 2rem;
+  background-color: #D9B48F;
+}
+
+.providers h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-right: 0.5rem;
+  font-size: 2rem;
+  color: #4A342E;
+}
+
+.provider-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 1.8rem;
+  gap: 2rem;
+  max-width: 100%;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #8B5E34;
+  color: #F7E1C1;
+  margin-top: 2rem;
+}
+
+footer h2 {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.socials h3 {
+  margin-right: 1.2rem;
+}
+
+.image-link img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  margin-right: 1.2rem;
+}
+.image-link img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+</head>
+<body>
+<div class="main-content">
+  <header class="navbar">
+    <img src="https://harimelayu.site/images/logoweb.png">
+    <nav class="nav-links">
+      <ul>
+        <li><a href="https://harimelayu.net/index.php">Masuk</a></li>
+        <li><a href="https://harimelayu.net/?content=register">Daftar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slide" id="slide-1">
+          <img src="https://harimelayu.site/images/upload-Slides-20241118131905.jpg">
+        </div>
+        <div class="slide" id="slide-2">
+          <img src="https://harimelayu.site/images/upload-Slides-20241111112209.jpg">
+        </div>
+        <div class="slide" id="slide-3">
+          <img src="https://harimelayu.site/images/upload-Slides-20241112095245.jpg">
+        </div>
+        <div class="slide" id="slide-4">
+          <img src="https://harimelayu.site/images/upload-Slides-20241112095253.jpg">
+        </div>
+        <div class="slide" id="slide-5">
+          <img src="https://harimelayu.site/images/upload-Slides-20241112173148.jpg">
+        </div>
+      </div>
+
+     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    
+    <section id="home" class="hero">
+      <h2>PREDIKSI SCORE BOLA</h2>
+      <div class="masukdaftar">
+        <div class="masuk">
+          <a href="https://harimelayu.net/index.php" target="_blank">MASUK</a>
+        </div>
+        <div class="daftar">
+          <a href="https://harimelayu.net/?content=register" target="_blank">DAFTAR</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="matches" class="predictions">
+      <h2>MATCHDAY</h2>
+      <p>07 DESEMBER 2024</p>
+      
+      <div class="filters"s>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="premierleague">Premier League</button>
+      </div>
+        
+      <div class="match-container">
+        <div class="match-card" data-role="premierleague">
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/teambadge/tottenham-hotspur-2024.png" alt="Team 1">
+            <span>Tottenham Hotspur</span>
+          </div>
+          <div class="score">
+            <span>0</span> : <span>2</span>
+          </div>
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/enet/8455.png" alt="Team 2">
+            <span>Chelsea</span>
+          </div>
+        </div>
+		<div class="match-card" data-role="premierleague">
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/enet/9879.png" alt="Team 1">
+            <span>Fulham</span>
+          </div>
+          <div class="score">
+            <span>0</span> : <span>3</span>
+          </div>
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/enet/9825.png" alt="Team 2">
+            <span>Arsenal</span>
+          </div>
+        </div>
+		<div class="match-card" data-role="premierleague">
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/enet/9902.png" alt="Team 1">
+            <span>Ipswich Town</span>
+          </div>
+          <div class="score">
+            <span>2</span> : <span>1</span>
+          </div>
+          <div class="team">
+            <img src="https://lsm-static-prod.livescore.com/high/enet/8678.png" alt="Team 2">
+            <span>Bournemouth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+  <section class="providers">
+    <h2>PROVIDER KAMI</h2>
+      <div class="provider-logos">
+        <img src="https://img.viva88athenae.com/sabalogo.png">
+        <img src="https://img.viva88athenae.com/sbologo.png">
+        <img src="https://img.viva88athenae.com/cmdlogo.png">
+      </div>
+  </section>
+
+  <footer>
+    <h2>Hubungi Kami :</h2>
+        <div class="socials">
+          <div class="whatsapp">
+            <a href="https://api.whatsapp.com/send?phone=+6281335316645&text=Halo%20bos" target="_blank" class="image-link">
+              <img src="https://img.viva88athenae.com//whatsapp.png" alt="whatsapp" style="width: 50px;">
+            </a>
+            <h3>Whatsapp</h3>
+          </div>
+          <div class="livechat">
+            <a href="https://static.zdassets.com/web_widget/latest/liveChat.html?v=10#key=chatmelayu4d.zendesk.com&settings=JTdCJTIyd2ViV2lkZ2V0JTIyJTNBJTdCJTIyY2hhdCUyMiUzQSU3QiUyMnRpdGxlJTIyJTNBbnVsbCUyQyUyMm1lbnVPcHRpb25zJTIyJTNBJTdCJTIyZW1haWxUcmFuc2NyaXB0JTIyJTNBdHJ1ZSU3RCUyQyUyMmRlcGFydG1lbnRzJTIyJTNBJTdCJTdEJTJDJTIycHJlY2hhdEZvcm0lMjIlM0ElN0IlMjJkZXBhcnRtZW50TGFiZWwlMjIlM0FudWxsJTJDJTIyZ3JlZXRpbmclMjIlM0FudWxsJTdEJTJDJTIyb2ZmbGluZUZvcm0lMjIlM0ElN0IlMjJncmVldGluZyUyMiUzQW51bGwlN0QlMkMlMjJjb25jaWVyZ2UlMjIlM0ElN0IlMjJhdmF0YXJQYXRoJTIyJTNBbnVsbCUyQyUyMm5hbWUlMjIlM0FudWxsJTJDJTIydGl0bGUlMjIlM0FudWxsJTdEJTdEJTJDJTIyY29sb3IlMjIlM0ElN0IlMjJhcnRpY2xlTGlua3MlMjIlM0ElMjIlMjIlMkMlMjJidXR0b24lMjIlM0ElMjIlMjIlMkMlMjJoZWFkZXIlMjIlM0ElMjIlMjIlMkMlMjJsYXVuY2hlciUyMiUzQSUyMiUyMiUyQyUyMmxhdW5jaGVyVGV4dCUyMiUzQSUyMiUyMiUyQyUyMnJlc3VsdExpc3RzJTIyJTNBJTIyJTIyJTJDJTIydGhlbWUlMjIlM0FudWxsJTdEJTdEJTdE&&locale=id-id&title=Widget%20Web%20Percakapan%20Langsung" target="_blank" class="image-link">
+              <img src="https://img.viva88athenae.com//livechat.png" alt="livechat" style="width: 50px;">
+            </a>
+            <h3>Livechat</h3>
+          </div>
+        </div>
+  </footer>
+ <script>
+	document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const playerCards = document.querySelectorAll(".match-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.getAttribute("data-filter");
+
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+        playerCards.forEach((card) => {
+          if (filter === "all" || card.getAttribute("data-role") === filter) {
+            card.classList.remove("hidden"); // Pastikan elemen terlihat
+          } else {
+            card.classList.add("hidden"); // Sembunyikan elemen
+          }
+      });
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('HAYAK4D');
+});
+
+let slideIndex = 0;
+
+function showSlide(index) {
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+
+if (index >= totalSlides) {
+  slideIndex = 0;
+} else if (index < 0) {
+  slideIndex = totalSlides - 1;
+} else {
+  slideIndex = index;
+}
+
+
+const slider = document.querySelector('.slider');
+slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+
+function moveSlide(step) {
+showSlide(slideIndex + step);
+}
+
+setInterval(() => {
+moveSlide(1);
+}, 5000);
+
+
+showSlide(slideIndex);
+</script>
+</body>
+</html>
